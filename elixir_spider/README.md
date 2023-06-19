@@ -1,6 +1,6 @@
 # ElixirSpider
-
-**TODO: Add description**
+This is an Elixir-based crawler built to scrape a website and return a JSON file in /temp folder. 
+`onemap.ex` scrapes OneMap's API [here](https://developers.onemap.sg/commonapi/search?searchVal=238823&returnGeom=Y&getAddrDetails=Y&pageNum=1), and `ebay.ex` scrapes eBay's website for PS5 consoles. 
 
 ## Installation
 
