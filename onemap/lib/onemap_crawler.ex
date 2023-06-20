@@ -14,7 +14,7 @@ defmodule OneMapScraper do
     url_list =
       # Onemap.get_list_of_new_urls()
 
-      Enum.map(10000..307381, fn number ->
+      Enum.map(10000..830000, fn number ->
         "#{url}#{postal_to_string(number)}"
       end)
 
