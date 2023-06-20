@@ -11,7 +11,7 @@ I've also added the Elixir-based crawler if you're interested to see what's unde
 Note: This file only takes the latlong of the first address of the postal code. For example, postal 238823 has multiple latlongs, but the file only stores the first latlong.
 
 ## Files & Details
-`onemap_crawler.ex`: A file containing the main logic of the crawler.
-`subset_onemap.ex`: A file containing the list of existing postal codes as a result of the crawler back in 2020, courtesy of Scratchbac.
-`superset_onemap.ex`: A file containing the list of postal codes as a result of the crawler in 2023.
+`onemap_crawler.ex`: A file containing the main logic of the crawler. <br />
+`subset_onemap.ex`: A file containing the list of existing postal codes as a result of the crawler back in 2020, courtesy of Scratchbac.<br />
+`superset_onemap.ex`: A file containing the list of postal codes as a result of the crawler in 2023.<br />
 `onemap.ex`: A module that uses `subset_onemap.ex` to check `superset_onemap.ex` for any missing postal codes. If there are, you can run `Onemap.get_list_of_new_urls()` and plug into the `start_urls` field of `onemap_crawler.ex`. 
