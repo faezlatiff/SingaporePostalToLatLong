@@ -12,8 +12,18 @@ defmodule Onemap do
     Enum.map(na_list, fn x -> url <> x end)
   end
 
-  def get_valid_postals_only() do
-    
+  def write_valid_postals_to_txt() do
+    map = ScrapedData.data
+
+    valid_map =
+      Map.keys(map)
+      |> Enum.filter(fn x -> map[x] === "" end)
+      |> Enum.reduce(map, fn key, acc -> Map.drop(acc, [key]) end)
+
+    file_path = "postal.txt"
+    file_content = Enum.map_join(Map.to_list(valid_map), "\n", fn {key, value} -> "\"#{key}\": #{inspect(value)}" end)
+
+    File.write(file_path, file_content, [:append])
   end
 
   def address_not_found_list() do
