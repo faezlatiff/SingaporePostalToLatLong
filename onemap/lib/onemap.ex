@@ -1,12 +1,8 @@
 defmodule Onemap do
 
-  def not_found_in_SBData() do
-    subset_keys = Map.keys(SBData.data())
-    Enum.map(subset_keys, fn x -> check_if_exist(x, ScrapedData.data()) end ) |> Enum.uniq()
-  end
-
   def get_list_of_new_urls() do
-    na_list = Onemap.address_not_found_list()
+    na_list = address_not_found_list()
+    # na_list = not_found_in_SBData()
     url = "https://developers.onemap.sg/commonapi/search?returnGeom=Y&getAddrDetails=Y&pageNum=1&searchVal="
 
     Enum.map(na_list, fn x -> url <> x end)
@@ -30,6 +26,11 @@ defmodule Onemap do
     all_numbers = Enum.to_list(10000..999999) |> Enum.map(&(postal_to_string(&1)))
     list = Map.keys(ScrapedData.data())
     all_numbers -- list
+  end
+
+  def not_found_in_SBData() do
+    subset_keys = Map.keys(SBData.data())
+    Enum.map(subset_keys, fn x -> check_if_exist(x, ScrapedData.data()) end ) |> Enum.uniq()
   end
 
   defp check_if_exist(subset_key, superset) do
