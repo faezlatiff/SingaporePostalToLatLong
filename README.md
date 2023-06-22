@@ -12,6 +12,6 @@ Note: This crawler only takes the latlong of the first address of the postal cod
 
 ## Files & Details
 `onemap_crawler.ex`: A file containing the main logic of the crawler. <br />
-`subset_onemap.ex`: A file containing the list of existing postal codes as a result of the crawler back in 2020, courtesy of Scratchbac.<br />
-`superset_onemap.ex`: A file containing the list of postal codes as a result of the crawler in 2023.<br />
+`SBData.ex`: A file containing the list of existing postal codes as a result of the crawler back in 2020, courtesy of Scratchbac.<br />
+`scrapeddata.ex`: A file containing the list of postal codes as a result of the crawler in 2023.<br />
 `onemap.ex`: A module that uses `subset_onemap.ex` to check `superset_onemap.ex` for any missing postal codes. If there are, you can run `Onemap.get_list_of_new_urls()` and plug into the `start_urls` field of `onemap_crawler.ex`. 
