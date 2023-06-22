@@ -14,7 +14,7 @@ defmodule OneMapScraper do
     url_list =
       # Onemap.get_list_of_new_urls() <- if the crawer gets rate-limited, comment out the block below and run this instead
 
-      Enum.map(830001..999999, fn number ->
+      Enum.map(10000..999999, fn number ->
         "#{url}#{postal_to_string(number)}"
       end)
 
