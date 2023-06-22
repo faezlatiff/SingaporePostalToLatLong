@@ -2,7 +2,7 @@ import Config
 
 config :crawly,
     closespider_timeout: :disabled  ,
-    concurrent_requests_per_domain: 8,
+    concurrent_requests_per_domain: 1000,
     closespider_itemcount: :disabled,
 
     middlewares: [

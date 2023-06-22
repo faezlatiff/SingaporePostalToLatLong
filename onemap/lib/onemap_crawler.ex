@@ -12,13 +12,11 @@ defmodule OneMapScraper do
     url = "https://developers.onemap.sg/commonapi/search?returnGeom=Y&getAddrDetails=Y&pageNum=1&searchVal="
 
     url_list =
-      # Onemap.get_list_of_new_urls()
+      # Onemap.get_list_of_new_urls() <- if the crawer gets rate-limited, comment out the block below and run this instead
 
-      Enum.map(10000..830000, fn number ->
+      Enum.map(830001..999999, fn number ->
         "#{url}#{postal_to_string(number)}"
       end)
-
-
 
     [start_urls: url_list]
 
@@ -32,7 +30,7 @@ defmodule OneMapScraper do
     data["results"]
     |> Enum.at(0)
     |> get_location_info()
-    |> maybe_store()
+    |> maybe_store(response.request_url)
 
   end
 
@@ -55,8 +53,8 @@ defmodule OneMapScraper do
   end
 
   defp get_location_info(_), do: nil
-  defp maybe_store(location_info) when not is_nil(location_info), do: %{items: [location_info]}
-  defp maybe_store(_), do: %{items: []}
+  defp maybe_store(location_info, _) when not is_nil(location_info), do: %{items: [location_info]}
+  defp maybe_store(_, url), do: %{items: [%{url |> String.split("searchVal=") |> Enum.at(1) => ""}]}
 
   defp postal_to_string(code) when code < 100000, do: "0" <> Integer.to_string(code)
   defp postal_to_string(code) when code >= 100000, do: Integer.to_string(code)
